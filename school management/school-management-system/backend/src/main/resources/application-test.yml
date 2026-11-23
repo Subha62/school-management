@@ -1,0 +1,30 @@
+spring:
+  jpa:
+    show-sql: false
+
+app:
+  uploads:
+    local-path: target/test-uploads
+  security:
+    jwt:
+      secret: test-only-signing-secret-0123456789-abcdefghijklmnopqrstuvwxyz
+    cookie:
+      secure: false
+    lockout:
+      max-failed-attempts: 3
+      lock-duration: PT15M
+    rate-limit:
+      max-failed-logins-per-ip: 100
+      max-failed-logins-per-identifier: 50
+      max-password-reset-requests-per-ip: 100
+      window: PT15M
+
+logging:
+  level:
+    com.schoolmanagement: INFO
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: false

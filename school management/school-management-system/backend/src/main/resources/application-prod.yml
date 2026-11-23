@@ -1,0 +1,32 @@
+# No defaults for anything sensitive or deployment-specific: DB_URL, DB_USERNAME, DB_PASSWORD,
+# CORS_ALLOWED_ORIGINS, JWT_SIGNING_SECRET and FRONTEND_BASE_URL must be supplied, otherwise startup fails.
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS}
+  security:
+    jwt:
+      secret: ${JWT_SIGNING_SECRET}
+    cookie:
+      secure: ${COOKIE_SECURE:true}
+    password-reset:
+      frontend-base-url: ${FRONTEND_BASE_URL}
+
+server:
+  forward-headers-strategy: framework
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+logging:
+  level:
+    root: INFO
+    com.schoolmanagement: INFO
